@@ -1,0 +1,184 @@
+javascript
+
+const products = [
+  {
+    name: "Elma",
+    type: "meyve",
+    color: "kırmızı/yeşil",
+    producer: "Ege Tarım",
+    purchasePrice: 8,
+    salePrice: 12,
+    stock: 7
+  },
+  {
+    name: "Muz",
+    type: "meyve",
+    color: "sarı",
+    producer: "Tropikal Meyve Ltd.",
+    purchasePrice: 15,
+    salePrice: 22,
+    stock: 9
+  },
+  {
+    name: "Çilek",
+    type: "meyve",
+    color: "kırmızı",
+    producer: "Akdeniz Çiftliği",
+    purchasePrice: 18,
+    salePrice: 26,
+    stock: 6
+  },
+  {
+    name: "Portakal",
+    type: "meyve",
+    color: "turuncu",
+    producer: "Finike Tarım",
+    purchasePrice: 7,
+    salePrice: 11,
+    stock: 10
+  },
+  {
+    name: "Üzüm",
+    type: "meyve",
+    color: "mor/yeşil",
+    producer: "Manisa Bağları",
+    purchasePrice: 14,
+    salePrice: 20,
+    stock: 8
+  },
+  {
+    name: "Karpuz",
+    type: "meyve",
+    color: "yeşil/kırmızı",
+    producer: "Adana Tarım",
+    purchasePrice: 5,
+    salePrice: 9,
+    stock: 5
+  },
+  {
+    name: "Armut",
+    type: "meyve",
+    color: "sarı/yeşil",
+    producer: "Bursa Meyvecilik",
+    purchasePrice: 9,
+    salePrice: 14,
+    stock: 7
+  },
+  {
+    name: "Kiraz",
+    type: "meyve",
+    color: "kırmızı",
+    producer: "Isparta Bahçeleri",
+    purchasePrice: 20,
+    salePrice: 30,
+    stock: 6
+  },
+  {
+    name: "Şeftali",
+    type: "meyve",
+    color: "turuncu/sarı",
+    producer: "Mersin Tarım",
+    purchasePrice: 13,
+    salePrice: 19,
+    stock: 9
+  },
+  {
+    name: "Limon",
+    type: "meyve",
+    color: "sarı",
+    producer: "Antalya Narenciye",
+    purchasePrice: 6,
+    salePrice: 10,
+    stock: 10
+  },
+  {
+    name: "Havuç",
+    type: "sebze",
+    color: "turuncu",
+    producer: "Konya Tarım",
+    purchasePrice: 4,
+    salePrice: 7,
+    stock: 8
+  },
+  {
+    name: "Domates",
+    type: "sebze",
+    color: "kırmızı",
+    producer: "Çanakkale Tarım",
+    purchasePrice: 6,
+    salePrice: 10,
+    stock: 5
+  },
+  {
+    name: "Brokoli",
+    type: "sebze",
+    color: "yeşil",
+    producer: "Karadeniz Organik",
+    purchasePrice: 10,
+    salePrice: 16,
+    stock: 7
+  },
+  {
+    name: "Salatalık",
+    type: "sebze",
+    color: "yeşil",
+    producer: "Sera Üretim AŞ",
+    purchasePrice: 5,
+    salePrice: 8,
+    stock: 9
+  },
+  {
+    name: "Biber",
+    type: "sebze",
+    color: "kırmızı/yeşil/sarı",
+    producer: "Ege Sera",
+    purchasePrice: 8,
+    salePrice: 13,
+    stock: 6
+  },
+  {
+    name: "Patlıcan",
+    type: "sebze",
+    color: "mor",
+    producer: "Hatay Tarım",
+    purchasePrice: 7,
+    salePrice: 12,
+    stock: 10
+  },
+  {
+    name: "Ispanak",
+    type: "sebze",
+    color: "yeşil",
+    producer: "Trakya Organik",
+    purchasePrice: 6,
+    salePrice: 9,
+    stock: 8
+  },
+  {
+    name: "Patates",
+    type: "sebze",
+    color: "sarı/kahverengi",
+    producer: "Niğde Çiftliği",
+    purchasePrice: 5,
+    salePrice: 8,
+    stock: 5
+  },
+  {
+    name: "Soğan",
+    type: "sebze",
+    color: "beyaz/mor",
+    producer: "Amasya Tarım",
+    purchasePrice: 4,
+    salePrice: 7,
+    stock: 7
+  },
+  {
+    name: "Kabak",
+    type: "sebze",
+    color: "yeşil/sarı",
+    producer: "Antalya Sera",
+    purchasePrice: 5,
+    salePrice: 9,
+    stock: 9
+  }
+];
