@@ -1,0 +1,34 @@
+Alışveriş Uygulaması (localstorage kullanılacak)
+
+Listelemeleri console'la veya alert ile yapabilirsiniz. Seçimler için prompt, uyarıları için alert kullanın. 
+
+    Kullanıcıyı karşılamayı ve anlamlı mesajlar göstermeyi unutmayın. Son kullanıcıya hazırlanan bir uygulama gibi düşünün.
+    Versiyonlar uygulamanıza ekleyebileceğiniz özellikleri ifade ediyor. Sıra sıra versiyonları bitirin, önce sonuncuyu yapmaya çalışmayın.
+
+
+Versiyon 1
+Uygulama açıldığında belirlediğiniz bir takım ürünler listesi ve ürün adetlerini listeleyin.
+Sepetimiz boş olsun. Kullanıcıya hangi ürünü eklemek istediğini soralım.
+Sepete ürün eklendikçe listedeki adet azalsın ve sepetteki ürünler olarak yazılsın.
+Ürün bittiğinde ürünler listesinden silinsin.
+
+
+Versiyon 2
+Uygulama açıldığında ürünleri gösterin. sepete ekleme yapıldığında sepetteki ürünleri ayrı bir menü olarak listeleyin.
+sepeti göster menüsü seçildiğinde sepetteki ürünleri listeleyin. ana menüye dön ve sepeti temizle seçenekleri olsun.
+sepet temizlenirse ürünler listesini tekrar oluşturun.
+
+
+Versiyon 3
+Ürünlerin fiyatları olsun. Sepet tutarı da gösterelim.
+
+
+Versiyon 4
+Ürünleri kategorilere ayırın. Listeleme yaparken kategorilere göre listeleyin.
+Kategori seçimine göre ürünleri gösterin. Ürünler tek kategori içinde olsun.
+
+
+Versiyon 5
+Ürünlerin birden fazla kategorisi olsun. Aynı ürün farklı kategori listesinde de çıkabilsin.
+
+NOT: Versiyonlu ödevlerin amacı tamamlanan bir önceki versiyonu koruyup (kopyasını alarak) yeni versiyonda üstüne ekleyip geliştirmek. Tamamlanan versiyonun kopyası alınmazsa bir aradan sonra işler karışabilir :)
