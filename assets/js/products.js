@@ -181,6 +181,8 @@ const products = [
   }
 ];
 
+let userBasket = [];
+
 console.log("Sebzeler Listesi");
 for(let i=0;i<products.length;i++){
   if(products[i].type === "sebze")
@@ -192,3 +194,5 @@ for(let i=0;i<products.length;i++){
   if(products[i].type === "meyve")
     console.log(`Ürün Adı : ${products[i].name} Stok Adedi : ${products[i].stock}`);
 }
+
+let userInput = prompt("Sepete Eklemek İstediğiniz Ürünü Giriniz");
