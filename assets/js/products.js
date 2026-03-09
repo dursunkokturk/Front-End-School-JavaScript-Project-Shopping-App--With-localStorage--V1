@@ -183,16 +183,41 @@ const products = [
 
 let userBasket = [];
 
-console.log("Sebzeler Listesi");
-for(let i=0;i<products.length;i++){
-  if(products[i].type === "sebze")
-  console.log(`Ürün Adı : ${products[i].name} Stok Adedi : ${products[i].stock}`);
+// localStorage'dan Sepete Data'lari Aliyoruz
+userBasket = JSON.parse(localStorage.getItem("userBasket")) || [];
+
+function saveBasket() {
+  localStorage.setItem("userBasket", JSON.stringify(userBasket));
 }
 
-console.log("Meyveler Listesi");
-for(let i=0;i<products.length;i++){
-  if(products[i].type === "meyve")
-    console.log(`Ürün Adı : ${products[i].name} Stok Adedi : ${products[i].stock}`);
+function productList(){
+
+  // products localStorage'a kaydet
+  localStorage.setItem("productList", JSON.stringify(products));
+
+  console.log("Sebzeler Listesi");
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].type === "sebze")
+      console.log(`Ürün Adı : ${products[i].name} Stok Adedi : ${products[i].stock}`);
+  }
+  
+  console.log("Meyveler Listesi");
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].type === "meyve")
+      console.log(`Ürün Adı : ${products[i].name} Stok Adedi : ${products[i].stock}`);
+  }
 }
 
-let userInput = prompt("Sepete Eklemek İstediğiniz Ürünü Giriniz");
+while (true) {
+
+  let userConfirmation = confirm("Sepete Ürün Eklemek İster Misiniz?");
+  
+  if(userConfirmation){
+    let userInput = prompt("Ürün Adını Giriniz");
+    userBasket.push(userInput);
+  }else{
+    productList();
+    break;
+  }
+  
+}
