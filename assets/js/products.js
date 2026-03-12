@@ -181,43 +181,150 @@ const products = [
   }
 ];
 
+localStorage.clear();
+
 let userBasket = [];
+let savedProducts;
 
 // localStorage'dan Sepete Data'lari Aliyoruz
 userBasket = JSON.parse(localStorage.getItem("userBasket")) || [];
+savedProducts = JSON.parse(localStorage.getItem("productList"));
+
+// localStorage'da Kayitli products Varsa Onu Kullaniyoruz
+if (savedProducts) {
+  products.forEach((product, index) => {
+    const saved = savedProducts.find(saveProduct => saveProduct.name === product.name);
+    if (saved) products[index].stock = saved.stock;
+  });
+}
 
 function saveBasket() {
   localStorage.setItem("userBasket", JSON.stringify(userBasket));
 }
 
-function productList(){
+function saveProducts() {
+  localStorage.setItem("productList", JSON.stringify(products));
+}
+
+function productList() {
 
   // products localStorage'a kaydet
   localStorage.setItem("productList", JSON.stringify(products));
 
-  console.log("Sebzeler Listesi");
+  console.log("===== Sebzeler Listesi =====");
   for (let i = 0; i < products.length; i++) {
     if (products[i].type === "sebze")
       console.log(`Ürün Adı : ${products[i].name} Stok Adedi : ${products[i].stock}`);
   }
-  
-  console.log("Meyveler Listesi");
+
+  console.log("===== Meyveler Listesi =====");
   for (let i = 0; i < products.length; i++) {
     if (products[i].type === "meyve")
       console.log(`Ürün Adı : ${products[i].name} Stok Adedi : ${products[i].stock}`);
   }
 }
 
+function userBasketList() {
+  console.log("===== Sepetiniz =====");
+  if (userBasket.length === 0) {
+    console.log("Sepetiniz boş.");
+    return;
+  }
+
+  for (let i = 0; i < userBasket.length; i++) {
+    console.log(`${i + 1}. ${userBasket[i].name} Adet : ${userBasket[i].quantity} `);
+  }
+}
+
+function addToBasket(productName) {
+
+  let existingItem = null;
+
+  for (let i = 0; i < userBasket.length; i++) {
+
+    // Kullanicidan Alinan Urun Adi Sepette Var Mi Diye Bakiyoruz
+    if (userBasket[i].name.toLowerCase() === productName.toLowerCase()) {
+      existingItem = userBasket[i];
+      break;
+    }
+  }
+
+  if (existingItem) {
+    // Kullanicidan Alinan Urun Adi Varsa 
+    // Yeni Kayit Acmadan Miktari Artiriyoruz
+    existingItem.quantity++;
+    console.log(`"${productName}" Sepetteki Güncellendi. Yeni Adet: ${existingItem.quantity}`);
+  } else {
+    // Kullanicidan Alinan Urun Adi Yoksa 
+    // Yeni Kayit Aciyoruz
+    userBasket.push({ name: productName, quantity: 1 });
+    console.log(`"${productName}" sepete ilk kez eklendi.`);
+  }
+
+  saveBasket();
+}
+
 while (true) {
 
   let userConfirmation = confirm("Sepete Ürün Eklemek İster Misiniz?");
-  
-  if(userConfirmation){
+
+  if (userConfirmation) {
     let userInput = prompt("Ürün Adını Giriniz");
-    userBasket.push(userInput);
-  }else{
+
+    // Kullanici Urun Adini Girme Asamasinda Islemi Iptal Ederse
+    // Donguye Devam Ediyoruz 
+    if (!userInput) {
+      continue;
+    }
+
+    // Kullanicidan Alinan Urun Adinin products Array Icinde
+    // Arama Islem Sonucunu Yonetiyoruz
+    let found = false;
+
+    for (let i = 0; i < products.length; i++) {
+      if (products[i].name.toLowerCase() === userInput.toLowerCase()) {
+
+        found = true;
+
+        // productStock Array Icinde Urunun Stock Var Ise
+        if (products[i].stock > 0) {
+
+          // Kullanici Urunu Sepete Ekledikten Sonra 
+          // Products Array Icindeki Urunun index Numarasi Uzerinden 
+          // productStock Array Icinde Stock Sayisini Azaltiyoruz
+          products[i].stock--;
+
+          // Sepete Ekliyoruz veya Miktari Artiriyoruz
+          addToBasket(products[i].name);
+
+          // Kullanicidan Alinan Urun Ismini Sepete Ekledikten Sonra
+          // products Array Icinde Kalan Miktari Yazdiriyoruz
+          console.log(`${products[i].name} Ürün Sepete Eklendi! Kalan Stok Miktarı : ${products[i].stock}`);
+
+          // Yapilan Islemi localStorage'a Kaydediyoruz
+          saveBasket();
+
+          // Products Array Icindeki Urunun index Numarasi Uzerinden 
+          // productStock Array Icinde Stock Sayisini Kontrol Ediyoruz
+          if (products[i].stock === 0) {
+            console.log(`${products[i].name} Stokta Yok Sepete Eklenemez! Urun Listeden Çıkarıldı`);
+            products.splice(i, 1);
+          }
+        }
+        else {
+          console.log(`"${userInput}" stokta yok!`);
+        }
+        
+        break;
+      }
+    }
+
+    if (!found) {
+      console.log(`${userInput} bulunamadı.`);
+    }
+  } else {
     productList();
+    userBasketList();
     break;
   }
-  
-}
+} 
